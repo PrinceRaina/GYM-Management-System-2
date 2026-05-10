@@ -1,0 +1,50 @@
+{
+  "entities": {
+    "User": {
+      "title": "Gym User",
+      "description": "User profile and fitness stats",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "goal": { "type": "string", "enum": ["weight_loss", "muscle_gain", "fitness", "flexibility"] },
+        "membershipTier": { "type": "string", "enum": ["free", "pro", "elite"] },
+        "stats": {
+          "type": "object",
+          "properties": {
+            "weight": { "type": "number" },
+            "height": { "type": "number" },
+            "age": { "type": "number" },
+            "dailyCaloriesGoal": { "type": "number" }
+          }
+        }
+      }
+    },
+    "GymClass": {
+      "title": "Gym Class",
+      "description": "A scheduled fitness class",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "type": { "type": "string" },
+        "instructor": { "type": "string" },
+        "startTime": { "type": "string", "format": "date-time" },
+        "duration": { "type": "number" },
+        "capacity": { "type": "number" },
+        "bookedCount": { "type": "number" },
+        "intensity": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profile data"
+    },
+    "classes/{classId}": {
+      "schema": "GymClass",
+      "description": "Available gym classes"
+    }
+  }
+}
