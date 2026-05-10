@@ -60,3 +60,13 @@ export interface NutritionLog {
   }[];
   totalCalories: number;
 }
+
+export interface MembershipPlan {
+  id: string;
+  name: string;
+  tier: 'free' | 'pro' | 'elite';
+  price: number;
+  period: 'monthly' | 'quarterly' | 'yearly';
+  features: string[];
+  isPopular?: boolean;
+}
